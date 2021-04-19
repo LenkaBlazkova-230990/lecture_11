@@ -50,13 +50,44 @@ def linear_search(sequential_data, searched_number):
     return dict
 
 
+def pattern_search(sequential_data, searched_pattern):
+    length_of_searched_pattern = len(searched_pattern)
+    positions_set = set()
+
+    start_idx = 0
+    end_idx = length_of_searched_pattern
+
+    while end_idx < len(sequential_data):
+        if sequential_data[start_idx:end_idx] == searched_pattern:
+            position = start_idx + (length_of_searched_pattern // 2)
+            positions_set.add(position)
+
+        start_idx += 1
+        end_idx = start_idx + length_of_searched_pattern
+    # while end_idx < len(sequential_data):
+    #     for idx in range(length_of_searched_pattern):
+    #         if searched_pattern == sequential_data[idx:idx + length_of_searched_pattern]:
+    #             position = start_idx + (length_of_searched_pattern // 2)
+    #             positions_set.add(position)
+    #
+    #         start_idx += 1
+    #         end_idx = start_idx + length_of_searched_pattern
+
+    return positions_set
+
+
 def main():
     file_name = "sequential.json"
-    sequential_data = read_data(file_name, "unordered_numbers")
+    # sequential_data = read_data(file_name, "unordered_numbers")
+    sequential_data = read_data(file_name, "dna_sequence")
     # print(sequential_data)
 
     linear_search_results = linear_search(sequential_data, searched_number=0)
-    print(linear_search_results)
+    # print(linear_search_results)
+
+    searched_pattern = "ATA"
+    pattern_search_results = pattern_search(sequential_data, searched_pattern)
+    print(pattern_search_results)
     # pass
 
 

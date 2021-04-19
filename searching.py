@@ -51,6 +51,12 @@ def linear_search(sequential_data, searched_number):
 
 
 # def pattern_search(sequential_data, searched_pattern):
+#     """
+#
+#     :param sequential_data:
+#     :param searched_pattern:
+#     :return:
+#     """
 #     length_of_searched_pattern = len(searched_pattern)
 #     positions_set = set()
 #
@@ -78,6 +84,12 @@ def linear_search(sequential_data, searched_number):
 
 # upraveny algoritmus
 def pattern_search(sequential_data, searched_pattern):
+    """
+
+    :param sequential_data:
+    :param searched_pattern:
+    :return:
+    """
     length_of_searched_pattern = len(searched_pattern)
     positions_set = set()
 
@@ -97,10 +109,32 @@ def pattern_search(sequential_data, searched_pattern):
     return positions_set
 
 
+def binary_search(sequential_data, searched_number):
+    """
+
+    :param sequential_data:
+    :param searched_number:
+    :return:
+    """
+    left_end = 0
+    right_end = len(sequential_data) - 1
+
+    while left_end <= right_end:
+        middle = (left_end + right_end) // 2
+
+        if searched_number < sequential_data[middle]:
+            right_end = middle - 1
+        elif searched_number > sequential_data[middle]:
+            left_end = middle + 1
+        else:
+            return middle
+
+
 def main():
     file_name = "sequential.json"
     # sequential_data = read_data(file_name, "unordered_numbers")
-    sequential_data = read_data(file_name, "dna_sequence")
+    # sequential_data = read_data(file_name, "dna_sequence")
+    sequential_data = read_data(file_name, "ordered_numbers")
     # print(sequential_data)
 
     linear_search_results = linear_search(sequential_data, searched_number=0)
@@ -108,7 +142,10 @@ def main():
 
     searched_pattern = "ATA"
     pattern_search_results = pattern_search(sequential_data, searched_pattern)
-    print(pattern_search_results)
+    # print(pattern_search_results)
+
+    binary_search_results = binary_search(sequential_data, searched_number=25)
+    print(binary_search_results)
     # pass
 
 

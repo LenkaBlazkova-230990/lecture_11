@@ -81,7 +81,6 @@ def linear_search(sequential_data, searched_number):
 #
 #     return positions_set
 
-
 # upraveny algoritmus
 def pattern_search(sequential_data, searched_pattern):
     """

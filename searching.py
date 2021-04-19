@@ -16,7 +16,7 @@ def read_data(file_name, field):
     """
     file_path = os.path.join(cwd_path, file_name)
 
-    if field not in {"unordered_numbers", "ordered_numberes", "dna_sequence"}:
+    if field not in {"unordered_numbers", "ordered_numbers", "dna_sequence"}:
         return None
 
     with open(file_path, 'r') as json_file:
@@ -26,15 +26,11 @@ def read_data(file_name, field):
     return sequence
 
 
-
-
-
-
 def main():
     file_name = "sequential.json"
     sequential_data = read_data(file_name, "unordered_numbers")
     print(sequential_data)
-    pass
+    # pass
 
 
 if __name__ == '__main__':

@@ -50,6 +50,33 @@ def linear_search(sequential_data, searched_number):
     return dict
 
 
+# def pattern_search(sequential_data, searched_pattern):
+#     length_of_searched_pattern = len(searched_pattern)
+#     positions_set = set()
+#
+#     start_idx = 0
+#     end_idx = length_of_searched_pattern
+#
+#     while end_idx < len(sequential_data):
+#         if sequential_data[start_idx:end_idx] == searched_pattern:
+#             position = start_idx + (length_of_searched_pattern // 2)
+#             positions_set.add(position)
+#
+#         start_idx += 1
+#         end_idx = start_idx + length_of_searched_pattern
+#     # while end_idx < len(sequential_data):
+#     #     for idx in range(length_of_searched_pattern):
+#     #         if searched_pattern == sequential_data[idx:idx + length_of_searched_pattern]:
+#     #             position = start_idx + (length_of_searched_pattern // 2)
+#     #             positions_set.add(position)
+#     #
+#     #         start_idx += 1
+#     #         end_idx = start_idx + length_of_searched_pattern
+#
+#     return positions_set
+
+
+# upraveny algoritmus
 def pattern_search(sequential_data, searched_pattern):
     length_of_searched_pattern = len(searched_pattern)
     positions_set = set()
@@ -58,20 +85,14 @@ def pattern_search(sequential_data, searched_pattern):
     end_idx = length_of_searched_pattern
 
     while end_idx < len(sequential_data):
-        if sequential_data[start_idx:end_idx] == searched_pattern:
-            position = start_idx + (length_of_searched_pattern // 2)
-            positions_set.add(position)
+        for idx_p in range(length_of_searched_pattern):
+            if searched_pattern[idx_p] != sequential_data[start_idx + idx_p]:
+                break
+        else:
+            positions_set.add(start_idx + length_of_searched_pattern // 2)
 
         start_idx += 1
-        end_idx = start_idx + length_of_searched_pattern
-    # while end_idx < len(sequential_data):
-    #     for idx in range(length_of_searched_pattern):
-    #         if searched_pattern == sequential_data[idx:idx + length_of_searched_pattern]:
-    #             position = start_idx + (length_of_searched_pattern // 2)
-    #             positions_set.add(position)
-    #
-    #         start_idx += 1
-    #         end_idx = start_idx + length_of_searched_pattern
+        end_idx += 1
 
     return positions_set
 
